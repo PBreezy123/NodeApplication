@@ -7,8 +7,13 @@ const router = express.Router();
 const Registration = mongoose.model('Registration')
 
 router.get('/', (req, res) => {
-  res.render('form', { title: 'Registration form' });
-});
+  res.render('form', { title: 'Registration form' }); });
+
+router.get('/registrations', (req, res) => {
+  res.render('index', { title: 'Listing registrations' }); });
+
+router.get('/contact', (req, res) => {
+  res.render('contactpage', {title: 'Contact information' }); });
 
 router.post(
   '/',
@@ -41,9 +46,9 @@ router.post(
 				errors: errors.array(),
 				data: req.body,
 			}
-			);
+			  );
 	}
 	}
-	);
+);
 
 module.exports = router;
