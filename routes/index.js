@@ -10,7 +10,12 @@ router.get('/', (req, res) => {
   res.render('form', { title: 'Registration form' }); });
 
 router.get('/registrations', (req, res) => {
-  res.render('index', { title: 'Listing registrations' }); });
+  Registration.find()
+    .then((registrations) => {
+      res.render('index', { title: 'Listing registrations', registrations });
+    })
+    .catch(() => { res.send('Sorry! Something went wrong.'); });
+});
 
 router.get('/contact', (req, res) => {
   res.render('contactpage', {title: 'Contact information' }); });
@@ -18,12 +23,15 @@ router.get('/contact', (req, res) => {
 router.post(
   '/',
   [
-    check('name')
+    check('fname')
       .isLength({ min: 1 })
-      .withMessage('Please enter a name'),
-    check('email')
+      .withMessage('Please enter your first name'),
+    check('lname')
       .isLength({ min: 1 })
-      .withMessage('Please enter an email'),
+      .withMessage('Please enter your last name'),
+    check('location')
+      .isLength({ min: 1 })
+      .withMessage('Please enter your location'),
   ],
   (req, res) => {
    console.log(req.body);

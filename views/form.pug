@@ -10,20 +10,28 @@ block content
     li= error.msg
 
  form(action="." method="POST")
-   label(for="name") Name:
+   label(for="fname") First Name:
    input(
      type="text"
-     id="name"
-     name="name"
-     value=data.name
+     id="fname"
+     name="fname"
+     value=data.fname
    )
 
-   label(for="email") Email:
+   label(for="lname") Last Name:
+   input(
+     type="text"
+     id="lname"
+     name="lname"
+     value=data.lname
+   )
+
+   label(for="location") Location:
     input(
-     type="email"
-     id="email"
-     name="email"
-     value=data.email
+     type="text"
+     id="location"
+     name="location"
+     value=data.location
    )
 
    input(type="submit" value="Submit")
